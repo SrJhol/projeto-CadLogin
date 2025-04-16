@@ -29,12 +29,15 @@ function salvarUser(){
 function criaLista(){
     let tabela = "  <tr><th>Nome</th><th>Ações</th></tr>";
     for(let i=0; i<= (dadosLista.length - 1); i++){
-        tabela += "  <tr><td>"+ dadosLista[i] +"</td><td><button class='btn btn-warning' onclick=''>Editar</button><button class='btn btn-warning' onclick='excluir(this.parentNode.parentNode.rowIndex)'>Excluir<button";
+        tabela += "  <tr><td>"+ dadosLista[i] +"</td><td><button class='btn btn-warning' onclick='editar(this.parentNode.parentNode.rowIndex)'>Editar</button><button class='btn btn-danger' onclick='excluir(this.parentNode.parentNode.rowIndex)'>Excluir<button";
         document.getElementById('tabela').innerHTML = tabela;
     }
 }
 function excluir(i){
     dadosLista.splice(i-1, 1);
     document.getElementById('tabela').deleteRow(i);
-    console.log(dadosList);
+}
+function editar(i){
+    document.getElementById('nomeUser').value =  dadosLista[(i-1)];
+    dadosLista.splice(dadosLista[(i-1)],1);
 }
